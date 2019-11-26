@@ -5,7 +5,7 @@ const User = require('../models/user')
 const auth = function( req, res, next ) {
   try {
     const token = req.header('Authorization').replace('Bearer ', '')
-    const decoded = jwt.verify(token, 'suSuperSecret')
+    const decoded = jwt.verify(token, 'abecedario')
     User.findOne({ _id: decoded._id, 'tokens.token': token }).then(function(user) {
       if(!user) {
         throw new Error()
